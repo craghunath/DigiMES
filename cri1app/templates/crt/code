@@ -1,0 +1,35 @@
+<td class="text-center">
+
+  <form class="md-form" enctype="multipart/form-data" method="post" > {% csrf_token %}
+  <div class="file-field">
+    <div class="btn btn-primary btn-sm float-center">
+    
+    <input type="file" accept="text/plain" name="upup" multiple>
+    <button type="submit" name="cri223btn">Upload</button>                        
+    </div>
+    </div>
+    </form>
+    {% if uploaded_file_url %}
+    <p>File uploaded at: </p>
+    {% endif %}
+
+</td>
+
+view coding
+
+def min_page(request):
+    
+    #print(BASE_DIR)
+    from django.conf import settings
+    from django.core.files.storage import FileSystemStorage
+    #import string as str
+
+ 
+
+    if request.method =='POST' and 'cri223btn' in request.POST:#if request.method == 'POST' and request.FILES['upup'] : #and request.FILES['upup']
+        myfile = request.FILES['upup']
+        nname = ''.join(('2020Y', myfile.name))
+        fs = FileSystemStorage()
+        filename = fs.save(nname, myfile)
+        uploaded_file_url = fs.url(filename)
+        render(request, 'tbl.html', {'uploaded_file_url': uploaded_file_url  })

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>ACADEMIC ENRICHEMENT </title>
+</head>
+
+<body>
+    <div class='container my-7'>
+        <nav aria-label="breadcrumb" class="p-3 mb-2 bg-warning text-dark">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" class="text-center">
+                    <h3>CRITERIA -1.2 Academic Flexibility </h3>
+                </li>
+
+            </ol>
+        </nav>
+
+        </nav>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="{%url 'cry11'%}">curiculum-planning 1.1</a></li>
+                <li class="page-item"><a class="page-link" href="{%url 'cry12'%}" name=c1>Academic-flexibility 1.2</a></li>
+                <li class="page-item"><a class="page-link" href="ce1.html">Curr-enrichment 1.3</a></li>
+                <li class="page-item"><a class="page-link" href="feed1.html">Feedback 1.4</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+        <h4>Key Indicator- 1.2 Academic Flexibility (30)</h4>
+
+        <!--Table-->
+        <!--Table-->
+
+        <table id="tablePreview" class="table table-hover table-sm table-bordered">
+            <!--Table head-->
+            <thead>
+                <tr>
+                    <th>
+                        <center>Metric No </center>
+                    </th>
+                    <th>
+                        <center>Query </center>
+                    </th>
+                    <th>
+                        <center>Upload relevant document</center>
+                    </th>
+
+                </tr>
+            </thead>
+            <!--Table head-->
+            <!--Table body-->
+            <tbody>
+                <tr>
+                    <td>
+                        <center>{{ gblMetric.c1.m21 }} </center>
+                    </td>
+                    <td>Percentage of Programmes in which Choice Based Credit System (CBCS)/ elective course system has
+                        been implemented<br>
+                        {{gblMetric.c1.m21}}.1. Number of Programmes in which CBCS/ Elective course system
+                        implemented.</td>
+                    <td>
+                        <center><a href="{%url 'cry121'%}" target="{%url 'cry121'%}" class="btn btn-primary">DATA TEMPLATE {{ gblMetric.c1.m21 }}</a>
+                        </center>
+                    </td>
+                </tr>
+                <!-- question 2 -->
+                <tr>
+                    <td>
+                        <center>{{ gblMetric.c1.m22 }}</center>
+                    </td>
+                    <td>Number of Add on /Certificate programs offered during the last five
+                        years<br>
+                        {{ gblMetric.c1.m22 }}.1: How many Add on /Certificate programs are added within the
+                        last 5 years<br>
+                        Data Requirement for last five years.</td>
+                    <td>
+                        <center><a href="{%url 'cry122'%}" target="{%url 'cry122'%}" class="btn btn-primary">DATA TEMPLATE {{ gblMetric.c1.m22 }}</a>
+                        </center>
+                    </td>
+                </tr>
+
+
+                <!-- question 3 -->
+                <tr>
+                    <td>
+                        <center>{{ gblMetric.c1.m23 }}</center>
+                    </td>
+                    <td>Average percentage of students enrolled in Certificate/ Add-on
+                        programs as against the total number of students during the last five
+                        years<br>
+                        {{ gblMetric.c1.m23 }}.1. Number of students enrolled in subject related Certificate or
+                        Add-on programs year wise during last five years.</td>
+                    <td>
+                        <center><a href="dt1231.html" target="dt1231.html" class="btn btn-primary">DATA TEMPLATE {{ gblMetric.c1.m23 }}</a>
+                        </center>
+                    </td>
+                </tr>
+            </tbody>
+            <!--Table body-->
+        </table>
+        <!--Table-->
+    </div>
+    </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS --><!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

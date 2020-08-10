@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>DATA TEMP {{ gblMetric.c1.m13 }}</title>
+</head>
+
+<body>
+
+    <div class='container my-5'>
+        <nav aria-label="breadcrumb" class="p-3 mb-2 bg-warning text-dark">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" class="text-center">
+                    <h3>CRITERIA - 1 Curricular Aspects (100)</h3>
+                </li>
+
+            </ol>
+        </nav>
+
+        </nav>
+
+        <center>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="font-italic"><a class="page-link" href="{%url 'cryd1'%}">Uploaded Files Display</a></li>
+            </ul>
+        </nav>
+        </center>
+
+        <table id="tablePreview" class="table table-bordered table-hover table-sm">
+            <!--Table head-->
+              <thead>
+                <tr>
+                  <th>Metric No</th>
+                  <th>Options</th>
+                  <th>Year & Month</th>
+                  <th>Department</th>
+                  <th>Name  of teacher participated</th>
+                  <th>Name of the body in which full time teacher participated</th>
+                 
+                </tr>
+              </thead>
+              <!--Table head-->
+              <!--Table body-->
+              <tbody>
+          <form class="md-form" enctype="multipart/form-data" method="post"  > {% csrf_token %}
+                <tr>
+                  <th class="text-center">
+                    {{ gblMetric.c1.m13 }} 
+                  </th>
+                  <th class="text-center">{{count}} </th>
+                <td class="text-center">
+                    <select name="cri113yr" class="mdb-select md-form">
+                      {% for yr in gblYr %}
+                      <option >{{ yr }}</option>
+                      {% endfor %}
+                      </select>
+                      <select name="cri113mnth" class="mdb-select md-form">
+                        {% for mn in gblMnth %}
+                        <option >{{ mn }}</option>
+                        {% endfor %}
+                        </select>
+                  </td>
+
+                  <td class="text-center">
+                    <select name="cri113dept" class="mdb-select md-form">
+                      {% for dept in DEPT %}
+                      <option >{{ dept }}</option>
+                      {% endfor %}
+                      </select>
+                  </td>
+
+                <td class="text-center">
+                  
+                  <input type="text" name="cri113name"  required>
+                  </td>
+                  <td class="text-center">
+                    <input type="text" name="cri113body" required>
+                    </td>
+                  
+                  
+                </tr>
+                
+              </tbody>
+              <!--Table body-->
+            </table>
+            <center>
+              <div class="btn btn-primary btn-sm float-center">
+                <!--input type="file"  name="cri113upld"  required-->      
+                <button type="submit" name="cri113databtn" value="{{ gblMetric.c1.m13 }}" >Table Upload</button>         
+            </div><p><strong>Repeated data upload channel</strong></p>
+            </center>
+        
+        </form>
+        <hr>
+        <p><strong>Requirement: Only ONE pdf file having all the necessary documents related to {{ gblMetric.c1.m13 }}<br>Note: Single file upload is sufficient, further repetitive-upload with same file name replaces the previous file.</strong></p>
+        <center>
+          <form class="md-form" enctype="multipart/form-data" method="post"  > {% csrf_token %}
+          <div class="btn btn-primary btn-sm float-center">
+            <input type="file"  name="cri113upld"  required>  
+            <button type="submit" name="cri113flbtn" value="{{ gblMetric.c1.m13 }}" >File Upload</button>      
+          </div>
+          </form>
+      {% if fileUpload %}
+      <p><strong>File upload successful</strong></p>
+      {% endif %}
+        </center>
+        <hr>
+        <center>
+          <a  class="btn btn-primary" href="{% url 'cry1' %}" target="">Return to Criteria 1</a>
+          <p>Note: If you need to change intial-entry, please return to Criteria 1</p>
+        </center>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+<!--
+<div class="file-field">
+  <div class="btn btn-primary btn-sm float-center">
+  
+  <input type="file"  name="cri113upld"  ><accept="text/plain" multiple >
+  <button type="submit" name="cri113flbtn" value="{{ gblMetric.c1.m13 }}" >Submit</button>    
+  </div>
+</div>
+
+-->

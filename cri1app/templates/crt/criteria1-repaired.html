@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>CRITERIA-1.1</title>
+</head>
+
+<body>
+    <div class='container my-7'>
+        <nav aria-label="breadcrumb" class="p-3 mb-2 bg-warning text-dark">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" class="text-center">
+                    <h3>CRITERIA - 1 Curricular Aspects (100)</h3>
+                </li>
+
+            </ol>
+        </nav>
+
+        </nav>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="{%url 'cry1'%}">curiculum-planning 1.1</a></li>
+                <li class="page-item"><a class="page-link" href="#">Academic-flexibility 1.2</a></li>
+                <li class="page-item"><a class="page-link" href="#">Curr-enrichment 1.3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Feedback 1.4</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+        <h4>Key Indicator – 1.1 Curricular Planning and Implementation (20)</h4>
+
+        <!--Table-->
+        <!--Table-->
+
+        <table id="tablePreview" class="table table-hover table-sm table-bordered">
+            <!--Table head-->
+            <thead>
+                <tr>
+                    <th>
+                        <center>Metric No </center>
+                    </th>
+                    <th>
+                        <center>Query </center>
+                    </th>
+                    <th>Description in 500 words</th>
+
+                    <th>
+                        <center>Upload relevant document</center>
+                    </th>
+
+                </tr>
+            </thead>
+            <!--Table head-->
+            <!--Table body-->
+            <tbody>
+                <form class="md-form" enctype="multipart/form-data" method="post"> {% csrf_token %}
+                    <tr>
+                        <td>
+                            <center>{{ gblMetric.c1.m11 }} </center>
+                        </td>
+                        <td>The Institution ensures effective curriculum delivery <br>through a well
+                            planned and documented process</td>
+                        <!--Textarea with icon prefix-->
+
+                        <td>
+                            <div class="md-form">
+                                <textarea id="form111txt" name='cri111txt' class="md-textarea form-control"
+                                    rows="2"></textarea>
+                            </div>
+                        </td>
+
+                        <td class="text-center">
+
+                            <div class="btn btn-primary btn-sm float-center">
+
+                                <input type="file" name="cri111upld" required>
+                                <!--accept="text/plain" multiple-->
+                                <button type="submit" name="cri111flbtn" value="{{ gblMetric.c1.m11 }}">Submit</button>
+                            </div>
+    </div>
+    </td>
+    </center>
+    </tr>
+    </form>
+
+
+    <!--  Question number 2  -->
+    <form class="md-form" enctype="multipart/form-data" method="post"> {% csrf_token %}
+        <tr>
+            <td>
+                <center>{{gblMetric.c1.m12 }}</center>
+            </td>
+            <td>The institution adheres to the academic calendar <br>including for the
+                conduct of CIE</td>
+            <!--Textarea with icon prefix-->
+            <td>
+                <div class="md-form">
+                    <textarea id="form112txt" name='cri112txt' class="md-textarea form-control" rows="2"></textarea>
+
+                </div>
+            </td>
+
+            <td class="text-center">
+
+                <div class="btn btn-primary btn-sm float-center">
+
+                    <input type="file" name="cri112upld" required>
+                    <!--accept="text/plain" multiple-->
+                    <button type="submit" name="cri112flbtn" value="{{ gblMetric.c1.m12 }}">Submit</button>
+                </div>
+                </div>
+            </td>
+
+        </tr>
+    </form>
+
+
+
+    <!--  Question number 3  -->
+
+    <tr>
+        <td>
+            <center>{{gblMetric.c1.m13}}</center>
+        </td>
+        <td>
+            Teachers of the Institution participate in following activities<br>
+            related to curriculum development and assessment of the <br>
+            affiliating University and/are represented on the following
+            academic bodies during the last five years<br>
+            1. Academic council/BoS of Affiliating university<br>
+            2. Setting of question papers for UG/PG programs<br>
+            3. Design and Development of Curriculum for<br> Add on/
+            certificate/ Diploma Courses<br>
+            4. Assessment /evaluation process of the affiliating University<BR>
+            Options<br>
+            1. All of the above<br>
+            2. Any 3 of the above<br>
+            3. Any 2 of the above<br>
+            4. Any 1 of the above<br>
+            5. None of the above<br>
+        </td>
+        <td>
+            <select class="mdb-select md-form">
+                <option value="" disabled selected>Choose your option</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </td>
+
+        <td>
+            <center><a href=" {%url 'cry113'%} " target=" {%url 'cry113'%} " class="btn btn-primary">DATA TEMPLATE
+                    {{gblMetric.c1.m13}}</a>
+            </center>
+        </td>
+
+    </tr>
+
+    </tbody>
+    <!--Table body-->
+    </table>
+    <!--Table-->
+    </div>
+    </div>
+    </div>
+
+    <!-- Second part criteria 1 Academic Flexibility-->
+
+    <div class='container my-7'>
+        <nav aria-label="breadcrumb" class="p-3 mb-2 bg-warning text-dark">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" class="text-center">
+                    <h3>CRITERIA -1.2 Academic Flexibility </h3>
+                </li>
+
+            </ol>
+        </nav>
+
+        </nav>
+
+        <h4>Key Indicator- 1.2 Academic Flexibility (30)</h4>
+
+        <!--Table-->
+        <!--Table-->
+
+        <table id="tablePreview" class="table table-hover table-sm table-bordered">
+            <!--Table head-->
+            <thead>
+                <tr>
+                    <th>
+                        <center>Metric No </center>
+                    </th>
+                    <th>
+                        <center>Query </center>
+                    </th>
+                    <th>
+                        <center>Upload relevant document</center>
+                    </th>
+
+                </tr>
+            </thead>
+            <!--Table head-->
+            <!--Table body-->
+            <tbody>
+                <tr>
+                    <td>
+                        <center>{{ gblMetric.c1.m21 }} </center>
+                    </td>
+                    <td>Percentage of Programmes in which Choice Based Credit System (CBCS)/ elective course system has
+                        been implemented<br>
+                        {{gblMetric.c1.m21}}.1. Number of Programmes in which CBCS/ Elective course system
+                        implemented.</td>
+                    <td>
+                        <center><a href="{%url 'cry121'%}" target="{%url 'cry121'%}" class="btn btn-primary">DATA
+                                TEMPLATE {{ gblMetric.c1.m21 }}</a>
+                        </center>
+                    </td>
+                </tr>
+                <!-- question 2 -->
+                <tr>
+                    <td>
+                        <center>{{ gblMetric.c1.m22 }}</center>
+                    </td>
+                    <td>Number of Add on /Certificate programs offered during the last five
+                        years<br>
+                        {{ gblMetric.c1.m22 }}.1: How many Add on /Certificate programs are added within the
+                        last 5 years<br>
+                        Data Requirement for last five years.</td>
+                    <td>
+                        <center><a href="{%url 'cry122'%}" target="{%url 'cry122'%}" class="btn btn-primary">DATA
+                                TEMPLATE {{ gblMetric.c1.m22 }}</a>
+                        </center>
+                    </td>
+                </tr>
+
+
+                <!-- question 3 -->
+                <tr>
+                    <td>
+                        <center>{{ gblMetric.c1.m23 }}</center>
+                    </td>
+                    <td>Average percentage of students enrolled in Certificate/ Add-on
+                        programs as against the total number of students during the last five
+                        years<br>
+                        {{ gblMetric.c1.m23 }}.1. Number of students enrolled in subject related Certificate or
+                        Add-on programs year wise during last five years.</td>
+                    <td>
+                        <center><a href="dt1231.html" target="dt1231.html" class="btn btn-primary">DATA TEMPLATE
+                                {{ gblMetric.c1.m23 }}</a>
+                        </center>
+                    </td>
+                </tr>
+            </tbody>
+            <!--Table body-->
+        </table>
+        <!--Table-->
+    </div>
+    </div>
+    </div>
+
+
+
+    <!-- Third part criteria 1 Key Indicator- 1.3 Curriculum Enrichment (30)-->
+
+    <div class='container my-7'>
+        <nav aria-label="breadcrumb" class="p-3 mb-2 bg-warning text-dark">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" class="text-center">
+                    <h3>Key Indicator- 1.3 Curriculum Enrichment (30) </h3>
+                </li>
+
+            </ol>
+        </nav>
+
+        </nav>
+
+        <h4>Key Indicator- 1.3 Curriculum Enrichment (30)</h4>
+
+        <!--Table-->
+        <!--Table-->
+
+        <table id="tablePreview" class="table table-hover table-sm table-bordered">
+            <!--Table head-->
+            <thead>
+                <tr>
+                    <th>
+                        <center>Metric No </center>
+                    </th>
+                    <th>
+                        <center>Query </center>
+                    </th>
+                    <th> Description in 500 words </th>
+                    <th>
+                        <center>Upload relevant document</center>
+                    </th>
+
+                </tr>
+            </thead>
+            <!--Table head-->
+            <!--Table body-->
+            <tbody>
+                <tr>
+                    <!--  Question number 2  -->
+                    <form class="md-form" enctype="multipart/form-data" method="post"> {% csrf_token %}
+                <tr>
+                    <td>
+                        <center>{{gblMetric.c1.m12 }}</center>
+                    </td>
+                    <td>Institution integrates crosscutting issues relevant to Professional Ethics, Gender, Human
+                        Values, Environment and Sustainability into the Curriculum</td>
+                    <!--Textarea with icon prefix-->
+                    <td>
+                        <div class="md-form">
+                            <textarea id="form112txt" name='cri112txt' class="md-textarea form-control"
+                                rows="2"></textarea>
+
+                        </div>
+                    </td>
+
+                    <td class="text-center">
+
+                        <div class="btn btn-primary btn-sm float-center">
+
+                            <input type="file" name="cri112upld" required>
+                            <!--accept="text/plain" multiple-->
+                            <button type="submit" name="cri112flbtn" value="{{ gblMetric.c1.m12 }}">Submit</button>
+                        </div>
+    </div>
+    </td>
+
+    </tr>
+    </form>
+    </tr>
+    <!-- question 2 -->
+    <tr>
+        <td>
+            <center>{{ gblMetric.c1.m22 }}</center>
+        </td>
+        <td>Average percentage of courses that include experiential learning through project work/field work/internship
+            during last five years
+            <br>
+            Data Requirement for last five years.</td>
+        <td></td>
+        <td>
+
+            <center><a href="{%url 'cry122'%}" target="{%url 'cry122'%}" class="btn btn-primary">DATA
+                    TEMPLATE {{ gblMetric.c1.m22 }}</a>
+            </center>
+        </td>
+    </tr>
+
+
+    <!-- question 3 -->
+    <tr>
+        <td>
+            <center>{{ gblMetric.c1.m23 }}</center>
+        </td>
+        <td>Percentage of students undertaking project work/field work/ internships (Data for the latest completed
+            academic year).</td>
+        <td></td>
+        <td>
+            <center><a href="dt1231.html" target="dt1231.html" class="btn btn-primary">DATA TEMPLATE
+                    {{ gblMetric.c1.m23 }}</a>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+    <!--Table body-->
+    </table>
+    <!--Table-->
+    </div>
+    </div>
+    </div>
+
+
+
+
+    <!-- Fourth part criteria 1 Key Indicator- 1.3 Curriculum Enrichment (30)-->
+
+    <div class='container my-7'>
+        <nav aria-label="breadcrumb" class="p-3 mb-2 bg-warning text-dark">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" class="text-center">
+                    <h3>Key Indicator- 1.4 Feedback System (20) </h3>
+                </li>
+
+            </ol>
+        </nav>
+
+        </nav>
+
+        <h4>Key Indicator- 1.4 Feedback System (20)</h4>
+
+        <!--Table-->
+        <!--Table-->
+
+        <table id="tablePreview" class="table table-hover table-sm table-bordered">
+            <!--Table head-->
+            <thead>
+                <tr>
+                    <th>
+                        <center>Metric No </center>
+                    </th>
+                    <th>
+                        <center>Query </center>
+                    </th>
+                    <th> </th>
+                   <th>
+                        <center>Upload relevant document</center>
+                    </th>
+
+                </tr>
+            </thead>
+            <!--Table head-->
+            <!--Table body-->
+            <tbody>
+                <tr>
+                    <!--  Question number 1  -->
+                    <form class="md-form" enctype="multipart/form-data" method="post"> {% csrf_token %}
+                <tr>
+                    <td>
+                        <center>{{gblMetric.c1.m12 }}</center>
+                    </td>
+                    <td>Institution obtains  feedback on the syllabus and its transaction at the institution from the following  stakeholders<br>
+                        1) Students <br>2)Teachers<br> 3)Employers<br> 4)Alumni<br>  
+                    Options: <br>
+                        A.  All of the above<br>
+                        B. Any 3 of the above<br>
+                        C. Any 2 of the above <br>       
+                        D. Any 1 of the above<br>
+                        E. None of the above<br>
+                    
+                    Data Requirement: <br>
+                    Report of analysis of feedback received from different stakeholders year wise<br></td>
+                    <td>
+                        <select class="mdb-select md-form">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                        </select>
+                    </td>
+
+                    <td class="text-center">
+
+                        <div class="btn btn-primary btn-sm float-center">
+
+                            <input type="file" name="cri112upld" required>
+                            <!--accept="text/plain" multiple-->
+                            <button type="submit" name="cri112flbtn" value="{{ gblMetric.c1.m12 }}">Submit</button>
+                        </div>
+    </div>
+    </td>
+    <td>
+         <tr>
+        <!--  Question number 2  -->
+        <form class="md-form" enctype="multipart/form-data" method="post"> {% csrf_token %}
+    <tr>
+        <td>
+            <center>{{gblMetric.c1.m12 }}</center>
+        </td>
+        <td>Feedback process of the Institution may be classified as follows:<br>
+            Options:<br>
+                A. Feedback collected, analysed and action taken and feedback available on website <br>
+                B. Feedback collected, analysed and action has been taken <br>
+                C. Feedback collected and analysed<br>
+                D. Feedback collected<br>
+                E.  Feedback not collected<br>
+                
+   
+        Options: <br>
+            A.  All of the above<br>
+            B. Any 3 of the above<br>
+            C. Any 2 of the above <br>       
+            D. Any 1 of the above<br>
+            E. None of the above<br>
+        
+               Documents: <br>
+Upload Stakeholders feedback report, Action taken report of the institute on it as stated in the minutes of the Governing Council, Syndicate, Board of Management<br>
+
+File Description<br>
+    • Upload any additional information<br>
+    • URL for feedback report<br></td>
+        <td>
+            <select class="mdb-select md-form">
+                <option value="" disabled selected>Choose your option</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+                <option>E</option>
+            </select>
+        </td>
+
+        <td class="text-center">
+
+            <div class="btn btn-primary btn-sm float-center">
+
+                <input type="file" name="cri112upld" required>
+                <!--accept="text/plain" multiple-->
+                <button type="submit" name="cri112flbtn" value="{{ gblMetric.c1.m12 }}">Submit</button>
+            </div>
+</div></td>
+
+    </tr>
+
+
+
+
+    
+    </tbody>
+    <!--Table body-->
+    </table>
+    <!--Table-->
+    </div>
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>

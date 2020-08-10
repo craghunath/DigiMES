@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Clear Uploading....</title>
+</head>
+
+<body>
+
+
+ 
+
+
+<div class='container my-5'>
+  <!--Table-->
+<table id="tablePreview" class="table table-bordered table-hover table-sm">
+<!--Table head-->
+<thead>
+<tr>
+<th class="text-center">@@@</th>
+<th class="text-center">#</th>
+<th class="text-center">Year</th>
+<th class="text-center">Participant Teacher Name</th>
+<th class="text-center">Upload Arena</th>
+
+</tr>
+</thead>
+<!--Table head-->
+<!--Table body-->
+<tbody>
+
+  
+<tr>
+  <th class="text-center">
+    <form class="md-form"  method="post" > <!--action="#"-->{% csrf_token %}
+      {{ gblMetric.c1.m13 }} 
+  </th>
+<th scope="row">2</th>
+<td class="text-center">
+  
+    <select name="cri113yr" class="mdb-select md-form">
+      {% for yr in gblYr %}
+      <option >{{ yr }}</option>
+      {% endfor %}
+      </select>
+
+    
+</td>
+<td class="text-center">
+<input type="text" name="cri113" required>
+<button type="submit" name="cri113btn" value="{{ gblMetric.c1.m13 }}">Submit</button>
+</td>
+</form>
+
+<td class="text-center">
+
+  <form class="md-form" enctype="multipart/form-data" method="post" > {% csrf_token %}
+  <div class="file-field">
+    <div class="btn btn-primary btn-sm float-center">
+    
+    <input type="file" accept="text/plain" name="cri113upld" multiple>
+    <button type="submit" name="cri113flbtn" value="{{ gblMetric.c1.m13 }}">Upload</button>                        
+    </div>
+    </div>
+    </form>
+    {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    {% endif %}
+
+</td>
+
+</tr>
+{% if dingo %}
+<tr><td><center><h4>This is it</h4></center></td></tr>
+{% endif %}
+
+</tbody>
+<!--Table body-->
+</table>
+<!--Table-->
+</div>
+
+
+
+</body>
+
+</html>
+
+<!--form class="md-form" enctype="multipart/form-data" method="post" > {% csrf_token %}
+  <div class="file-field">
+    <div class="btn btn-primary btn-sm float-center">
+    
+    <input type="file" accept="text/plain" name="upup" multiple>
+    <button type="submit">Upload</button>                        
+    </div>
+    </div>
+    </form>
+    {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="#">{{ uploaded_file_url }}</a></p>
+    {% endif %} --><!--span>Thuplod</span--><!--action="#"   class="form-control form-control-sm"   enctype="multipart/form-data"   <a href="#">{{ uploaded_file_url }}</a>-->

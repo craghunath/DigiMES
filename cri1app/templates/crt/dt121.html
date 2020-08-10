@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <title>DATA TEMP {{ gblMetric.c1.m21 }}</title>
+</head>
+
+<body>
+  <div class='container my-5'>
+    <nav aria-label="breadcrumb" class="p-3 mb-2 bg-warning text-dark">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page" class="text-center">
+          <h3>CRITERIA - 1 Curricular Aspects (100)</h3>
+        </li>
+
+      </ol>
+    </nav>
+
+    </nav>
+    
+  <center>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">
+          <li class="font-italic"><a class="page-link" href="{%url 'cryd1'%}">Uploaded Files Display</a></li>
+      </ul>
+  </nav>
+  </center>
+
+    <div class='container my-5'>
+      <h5>{{gblMetric.c1.m21}}.1. Program No selected :  <strong>{{count}}</strong></h5>            
+      <table id="tablePreview" class="table table-bordered table-hover table-sm table-responsive">
+        <!--Table head-->
+        <thead>
+          <tr>
+            <th>Metric No</th>
+            <th>Programme Code/Department</th>
+            <th>Programme Name</th>
+            <th>Year of introduction</th>
+            <th>Status of implementation of CBCS / elective course system
+              (Yes/No) </th>
+            <th>Year of implementation of
+              Introduction CBCS / elective course system
+            </th>
+            <!--th>Link to the relevant document</th-->
+          </tr>
+        </thead>
+        <!--Table head-->
+        <!--Table body-->
+        <tbody>
+          <tr>
+            <form class="md-form" enctype="multipart/form-data" method="post"  > {% csrf_token %}
+            <th>{{ gblMetric.c1.m21  }} </th>
+            <td>
+              <input type="text" name="cri121code" placeholder="If any" >
+              <!--select name="cri122dept" class="mdb-select md-form" required>
+                <option selected disabled>Deptartment</option>
+                {% for dept in DEPT %}
+                <option >{{ dept }}</option>
+                {% endfor %}
+              </select-->
+            </td>
+            <td> <input type="text" name='cri121name' required> </td>
+            <td>
+              <select name="cri121yr" class="mdb-select md-form">
+                {% for yr in gblYr %}
+                <option>{{ yr  }}</option>
+                {% endfor %}
+              </select>
+              <select name="cri121mnth" class="mdb-select md-form">
+                {% for mn in gblMnth %}
+                <option>{{ mn }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <td> <input type="text" name='cri121implementstatus' required> </td>
+            <td>
+              <select name="cri121yrimplement" class="mdb-select md-form">
+                {% for yr in gblYr %}
+                <option>{{ yr  }}</option>
+                {% endfor %}
+              </select>
+              <select name="cri121mnthimplement" class="mdb-select md-form">
+                {% for mn in gblMnth %}
+                <option>{{ mn }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <!--td> Appears after the Document Upload </td-->
+
+
+          </tr>
+
+        </tbody>
+        <!--Table body-->
+      </table>
+    </div>
+    <center>
+      <div class="btn btn-primary btn-sm float-center">
+        <!--input type="file"  name="cri121upld"  required-->      
+        <button type="submit" name="cri121databtn" value="{{ gblMetric.c1.m21 }}" >Table Upload</button>         
+    </div><p><strong>Repeated data upload channel</strong></p>
+    </center>
+
+</form>
+<hr>
+<p><strong>Requirement: Only ONE pdf file having all the necessary documents related to {{ gblMetric.c1.m21 }}<br>Note: Single file upload is sufficient, further repetitive-upload with same file name replaces the previous file.</strong></p>
+<center>
+  <form class="md-form" enctype="multipart/form-data" method="post"  > {% csrf_token %}
+  <div class="btn btn-primary btn-sm float-center">
+    <input type="file"  name="cri121upld"  required>  
+    <button type="submit" name="cri121flbtn" value="{{ gblMetric.c1.m21 }}" >File Upload</button>      
+  </div>
+</form>
+{% if fileUpload %}
+<p><strong>File upload successful</strong></p>
+{% endif %}
+</center>
+<hr>
+<center>
+  <a  class="btn btn-primary" href="{% url 'cry1' %}" target="">Return to Criteria 1</a>
+  <p>Note: If you need to change intial-entry, please return to Criteria 1</p>
+</center>
+<!--
+{% if fileUpload %}
+<form class="md-form" enctype="multipart/form-data" method="post"  > {% csrf_token %}
+  <hr>
+<div class="btn btn-primary btn-sm float-center">
+  <input type="file"  name="cri121upld"  required>
+  <button type="submit" name="cri121flbtn" value="{{ gblMetric.c1.m21 }}" >UPLOAD</button>
+</div>
+</form>
+{% endif %}
+
+
+    <center><h4>Current file update successful</h4></center>
+    <center><a  class="btn btn-primary" href="{{ uploaded_file_url121 }}" target="{{ uploaded_file_url121 }}" >Please Verify</a>
+    </center>
+-->
+
+{% if uploaded_file_url121 %}
+
+    <hr>
+    <center><a  class="btn btn-primary" href="{% url 'cry1' %}" target="">Criteria-1 Page</a></center>
+    {% endif %}
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
