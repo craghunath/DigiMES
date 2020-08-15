@@ -36,7 +36,7 @@
 
         <h3>All File Links Display</h3>
         {% for filename in filename %}
-        <h6><a href="{% url 'cry1'%}" target="{%url 'cry1'%}">{{ filename }}</a></h6>
+        <h6><a href="{{ filename.file_link }}" target="{{ filename.file_link }}">{{ filename.file_name }}</a></h6>
         {% endfor %}
 
         <!--Table-->

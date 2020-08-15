@@ -13,18 +13,25 @@ context = {
         'DEPT': DEPT,
         'gblMnth':gblMnth,
         }
+psd = {'usr1':'psw1', 'usr2':'psw2'}
 #count = 'none'
-#try:
+#try: http://35.188.109.10:9090/
 #        lgin = request.session['usr']
+
+def logoff(request):
+        del request.session['usr']
+        return render(request, 'cri1app/templates/crt/psswd.html', {'psr':''})
+
 
 def logon(request):
     
-    psd = {'usr1':'psw1', 'usr2':'psw2'}
+    
     psr = ''
     if request.POST:
 
         try:
             chck = psd[request.POST['usr']]
+            request.session['usr'] = request.POST['usr'] 
             if chck == request.POST['password']:                    
                     return redirect('cry1')
             else:
@@ -37,133 +44,149 @@ def logon(request):
 
 
 def cry1(request):
-        if 'cri111flbtn' in request.POST:
-                
-                lnkBase = mdl.M111m12(metric=request.POST['cri111flbtn'], description_500wrds=request.POST['cri111txt'])
-                lnkBase.save()                
-                myfile = request.FILES['cri111upld']
-                nname = '-'.join((request.POST['cri111flbtn'], myfile.name))
-                fs = FileSystemStorage()
-                if fs.exists(nname): fs.delete(nname)
-                filename = fs.save(nname, myfile)
-                fileUpload = fs.url(filename)
-                flnk = mdl.Filelinks(metric=request.POST['cri111flbtn'], file_name=nname, file_link=fileUpload)
-                flnk.save()
-                flcontext = {**context, **{'fileUpload': fileUpload,}}
-                return render(request, 'cri1app/templates/crt/criteria1.html', flcontext)
-        
-        elif 'cri112flbtn' in request.POST:
-                
-                lnkBase = mdl.M111m12(metric=request.POST['cri112flbtn'], description_500wrds=request.POST['cri112txt'])
-                lnkBase.save()                
-                myfile = request.FILES['cri112upld']
-                nname = '-'.join((request.POST['cri112flbtn'], myfile.name))
-                fs = FileSystemStorage()
-                if fs.exists(nname): fs.delete(nname)
-                filename = fs.save(nname, myfile)
-                fileUpload = fs.url(filename)
-                flnk = mdl.Filelinks(metric=request.POST['cri112flbtn'], file_name=nname, file_link=fileUpload)
-                flnk.save()
-                flcontext = {**context, **{'fileUpload': fileUpload,}}
-                return render(request, 'cri1app/templates/crt/criteria1.html', flcontext)
+        try:
+                if request.session['usr']:
+                        #del request.session['usr']
+                        if 'cri111flbtn' in request.POST:
 
-        elif    'cri113optnbtn' in request.POST:
-                request.session['cri113optn'] = request.POST['cri113optn']
-                return redirect('cry113')
-        elif    'cri121countbtn' in request.POST:
-                request.session['cri121count'] = request.POST['cri121count']
-                return redirect('cry121')
-        elif    'cri122countbtn' in request.POST:
-                request.session['cri122count'] = request.POST['cri122count']
-                return redirect('cry122')
-        elif    'cri123countbtn' in request.POST:
-                lnkBase = mdl.M123(metric=request.POST['cri123countbtn'], year=request.POST['cri123yr'], enrolled_students_no=request.POST['cri123count'])
-                lnkBase.save()
+                                lnkBase = mdl.M111m12(metric=request.POST['cri111flbtn'], description_500wrds=request.  POST      ['cri111txt'])
+                                lnkBase.save()                
+                                myfile = request.FILES['cri111upld']
+                                nname = '-'.join((request.POST['cri111flbtn'], myfile.name))
+                                fs = FileSystemStorage()
+                                if fs.exists(nname): fs.delete(nname)
+                                filename = fs.save(nname, myfile)
+                                fileUpload = fs.url(filename)
+                                flnk = mdl.Filelinks(metric=request.POST['cri111flbtn'], file_name=nname,       file_link=fileUpload)
+                                flnk.save()
+                                flcontext = {**context, **{'fileUpload': fileUpload,}}
+                                return render(request, 'cri1app/templates/crt/criteria1.html', flcontext)
 
-        else: return render(request, 'cri1app/templates/crt/criteria1.html', context)
+                        elif 'cri112flbtn' in request.POST:
+
+                                lnkBase = mdl.M111m12(metric=request.POST['cri112flbtn'], description_500wrds=request.  POST      ['cri112txt'])
+                                lnkBase.save()                
+                                myfile = request.FILES['cri112upld']
+                                nname = '-'.join((request.POST['cri112flbtn'], myfile.name))
+                                fs = FileSystemStorage()
+                                if fs.exists(nname): fs.delete(nname)
+                                filename = fs.save(nname, myfile)
+                                fileUpload = fs.url(filename)
+                                flnk = mdl.Filelinks(metric=request.POST['cri112flbtn'], file_name=nname,       file_link=fileUpload)
+                                flnk.save()
+                                flcontext = {**context, **{'fileUpload': fileUpload,}}
+                                return render(request, 'cri1app/templates/crt/criteria1.html', flcontext)
+
+                        elif    'cri113optnbtn' in request.POST:
+                                request.session['cri113optn'] = request.POST['cri113optn']
+                                return redirect('cry113')
+                        elif    'cri121countbtn' in request.POST:
+                                request.session['cri121count'] = request.POST['cri121count']
+                                return redirect('cry121')
+                        elif    'cri122countbtn' in request.POST:
+                                request.session['cri122count'] = request.POST['cri122count']
+                                return redirect('cry122')
+                        elif    'cri123countbtn' in request.POST:
+                                lnkBase = mdl.M123(metric=request.POST['cri123countbtn'], year=request.POST['cri123yr'] ,        enrolled_students_no=request.POST['cri123count'])
+                                lnkBase.save()
+
+                        else: return render(request, 'cri1app/templates/crt/criteria1.html', context)
+        except: return redirect('logon')
 
 def cry113(request):
 
-        count = request.session['cri113optn']
+        try:
+                if request.session['usr']:
+                        count = request.session['cri113optn']
 
-        if 'cri113databtn' in request.POST:
-               
-                lnkBase = mdl.M113(metric=request.POST['cri113databtn'], option=count, year=request.POST['cri113yr'], month=request.POST['cri113mnth'], department=request.POST['cri113dept'], teacher_name=request.POST['cri113name'], participated_body=request.POST['cri113body'])
-                lnkBase.save()
+                        if 'cri113databtn' in request.POST:
+                        
+                                lnkBase = mdl.M113(metric=request.POST['cri113databtn'], option=count, year=request.POST        ['cri113yr'],   month=request.POST['cri113mnth'], department=request.POST['cri113dept'],        teacher_name=request.POST        ['cri113name'], participated_body=request.POST['cri113body'])
+                                lnkBase.save()
 
-        elif 'cri113flbtn' in request.POST:                
-                      
-                myfile = request.FILES['cri113upld']
-                nname = '-'.join((request.POST['cri113flbtn'], myfile.name))
-                fs = FileSystemStorage()
-                if fs.exists(nname): fs.delete(nname)
-                filename = fs.save(nname, myfile)
-                fileUpload = fs.url(filename)
-                flnk = mdl.Filelinks(metric=request.POST['cri113flbtn'], file_name=nname, file_link=fileUpload)
-                flnk.save()
-                flcontext = {**context, **{'fileUpload': fileUpload,'count': count, }}
-                return render(request, 'cri1app/templates/crt/dt113.html', flcontext)
+                        elif 'cri113flbtn' in request.POST:                
 
-        
-        flcontext = {**context, **{'count': count }}
-        return render(request, 'cri1app/templates/crt/dt113.html', flcontext)
+                                myfile = request.FILES['cri113upld']
+                                nname = '-'.join((request.POST['cri113flbtn'], myfile.name))
+                                fs = FileSystemStorage()
+                                if fs.exists(nname): fs.delete(nname)
+                                filename = fs.save(nname, myfile)
+                                fileUpload = fs.url(filename)
+                                flnk = mdl.Filelinks(metric=request.POST['cri113flbtn'], file_name=nname,       file_link=fileUpload)
+                                flnk.save()
+                                flcontext = {**context, **{'fileUpload': fileUpload,'count': count, }}
+                                return render(request, 'cri1app/templates/crt/dt113.html', flcontext)
+
+
+                        flcontext = {**context, **{'count': count }}
+                        return render(request, 'cri1app/templates/crt/dt113.html', flcontext)
+        except: return redirect('logon') 
 
 def cry121(request):
 
-        count = request.session['cri121count']
+        try:
+                if request.session['usr']:
+                        count = request.session['cri121count']
 
-        if 'cri121databtn' in request.POST:
+                        if 'cri121databtn' in request.POST:
 
-                lnkBase = mdl.M121(metric=request.POST['cri121databtn'], program_code=request.POST['cri121code'], program_name=request.POST['cri121name'], year=request.POST['cri121yr'], month=request.POST['cri121mnth'], implment_status=request.POST['cri121implementstatus'], implment_year=request.POST['cri121yrimplement'], implment_month=request.POST['cri121mnthimplement'], program_totalNo=count)
-                lnkBase.save()            
-     
-        
-        elif 'cri121flbtn' in request.POST:                
-                      
-                myfile = request.FILES['cri121upld']
-                nname = '-'.join((request.POST['cri121flbtn'], myfile.name))
-                fs = FileSystemStorage()
-                if fs.exists(nname): fs.delete(nname)
-                filename = fs.save(nname, myfile)
-                fileUpload = fs.url(filename)
-                flnk = mdl.Filelinks(metric=request.POST['cri121flbtn'], file_name=nname, file_link=fileUpload)
-                flnk.save()
-                flcontext = {**context, **{'fileUpload': fileUpload,'count': count, }}
-                return render(request, 'cri1app/templates/crt/dt121.html', flcontext)
+                                lnkBase = mdl.M121(metric=request.POST['cri121databtn'], program_code=request.POST      ['cri121code'],       program_name=request.POST['cri121name'], year=request.POST['cri121yr'],         month=request.POST    ['cri121mnth'], implment_status=request.POST['cri121implementstatus'],    implment_year=request.POST   ['cri121yrimplement'], implment_month=request.POST    ['cri121mnthimplement'], program_totalNo=count)
+                                lnkBase.save()            
 
-        
-        flcontext = {**context, **{'count': count }}
-        return render(request, 'cri1app/templates/crt/dt121.html', flcontext)
+
+                        elif 'cri121flbtn' in request.POST:                
+
+                                myfile = request.FILES['cri121upld']
+                                nname = '-'.join((request.POST['cri121flbtn'], myfile.name))
+                                fs = FileSystemStorage()
+                                if fs.exists(nname): fs.delete(nname)
+                                filename = fs.save(nname, myfile)
+                                fileUpload = fs.url(filename)
+                                flnk = mdl.Filelinks(metric=request.POST['cri121flbtn'], file_name=nname,       file_link=fileUpload)
+                                flnk.save()
+                                flcontext = {**context, **{'fileUpload': fileUpload,'count': count, }}
+                                return render(request, 'cri1app/templates/crt/dt121.html', flcontext)
+
+
+                        flcontext = {**context, **{'count': count }}
+                        return render(request, 'cri1app/templates/crt/dt121.html', flcontext)
+        except: return redirect('logon')
 
 def cry122(request):
 
-        count = request.session['cri122count']
+        try:
+                if request.session['usr']:
+                        count = request.session['cri122count']
 
-        if 'cri122databtn' in request.POST:
-                lnkBase = mdl.M122(metric=request.POST['cri122databtn'], year=request.POST['cri122yr'], month=request.POST['cri122mnth'], course_name=request.POST['cri122name'], course_code=request.POST['cri122code'], department=request.POST['cri122dept'], offered_year=request.POST['cri122yroffer'], offered_month=request.POST['cri122mnthoffer'], offered_times=request.POST['cri122times'], course_duration=request.POST['cri122duration'], enrolled_students_no=request.POST['cri122studentEnrolled'], completed_students_no=request.POST['cri122studentCompleted'], course_totalNo=count)
-                lnkBase.save() 
-    
-        
-        elif 'cri122flbtn' in request.POST:                
-                      
-                myfile = request.FILES['cri122upld']
-                nname = '-'.join((request.POST['cri122flbtn'], myfile.name))
-                fs = FileSystemStorage()
-                if fs.exists(nname): fs.delete(nname)
-                filename = fs.save(nname, myfile)
-                fileUpload = fs.url(filename)
-                flnk = mdl.Filelinks(metric=request.POST['cri122flbtn'], file_name=nname, file_link=fileUpload)
-                flnk.save()
-                flcontext = {**context, **{'fileUpload': fileUpload,'count': count, }}
-                return render(request, 'cri1app/templates/crt/dt122.html', flcontext)
+                        if 'cri122databtn' in request.POST:
+                                lnkBase = mdl.M122(metric=request.POST['cri122databtn'], year=request.POST['cri122yr'],         month=request.  POST['cri122mnth'], course_name=request.POST['cri122name'],     course_code=request.POST['cri122code'],       department=request.POST['cri122dept'],        offered_year=request.POST['cri122yroffer'],    offered_month=request.POST['cri122mnthoffer'],  offered_times=request.POST['cri122times'],  course_duration=request.POST['cri122duration'],      enrolled_students_no=request.POST        ['cri122studentEnrolled'],  completed_students_no=request.POST['cri122studentCompleted'],        course_totalNo=count)
+                                lnkBase.save() 
+
+
+                        elif 'cri122flbtn' in request.POST:                
+
+                                myfile = request.FILES['cri122upld']
+                                nname = '-'.join((request.POST['cri122flbtn'], myfile.name))
+                                fs = FileSystemStorage()
+                                if fs.exists(nname): fs.delete(nname)
+                                filename = fs.save(nname, myfile)
+                                fileUpload = fs.url(filename)
+                                flnk = mdl.Filelinks(metric=request.POST['cri122flbtn'], file_name=nname,       file_link=fileUpload)
+                                flnk.save()
+                                flcontext = {**context, **{'fileUpload': fileUpload,'count': count, }}
+                                return render(request, 'cri1app/templates/crt/dt122.html', flcontext)
 
         
-        flcontext = {**context, **{'count': count }}
-        return render(request, 'cri1app/templates/crt/dt122.html', flcontext)
+                        flcontext = {**context, **{'count': count }}
+                        return render(request, 'cri1app/templates/crt/dt122.html', flcontext)
+        except: return redirect('logon')
 
 def cryd1(request):
-        filename = DEPT
-        return render(request, 'cri1app/templates/crt/filesDisplay.html', {'filename':filename,})
+        try:
+                if request.session['usr']:
+                        filename = mdl.Filelinks.objects.all()
+                        return render(request, 'cri1app/templates/crt/filesDisplay.html', {'filename':filename,})
+        except: return redirect('logon')
 
 
 

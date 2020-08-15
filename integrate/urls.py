@@ -16,23 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from cri1app import views as ve1
+#from django.http import HttpRequest
 
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', ve1.logon, name='logon'),
     path('111', ve1.cry1, name='cry1'),
     #path('12/', ve1.cry12, name='cry12'),    
     path('113/', ve1.cry113, name='cry113'),
     path('121/', ve1.cry121, name='cry121'),
     path('122/', ve1.cry122, name='cry122'),
     path('d1/', ve1.cryd1, name='cryd1'),
-    path('', ve1.logon, name='logon'),
     path('tbl/', ve1.page, name='nota'),
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+#+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #if settings.USE_LOCAL_MEDIA:
 #    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
